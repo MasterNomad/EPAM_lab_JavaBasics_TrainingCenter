@@ -13,8 +13,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class StudentService {
 
-    private StudentRepository studentRepository = new StudentRepository();
-
     public int getRemainingDaysByStudent(Student student) {
         int remainingDays = getCurriculumDuration(student.getCurriculum()) - (int) DAYS.between(student.getStartDate(), LocalDate.now());
         return remainingDays < 0 ? 0 : remainingDays;

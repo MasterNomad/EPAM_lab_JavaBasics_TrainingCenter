@@ -13,7 +13,7 @@ public class ShowService {
     private StudentRepository studentRepository = new StudentRepository();
     private StudentService studentService = new StudentService();
 
-    private String format = "%-20s %-20s %-10s\n";
+    private String format = "%-20s %-20s %-10s%n";
 
     public void showStudentsByAverageMark() {
         List<Student> sortStudents = studentRepository.getAllStudents().stream()
@@ -38,18 +38,18 @@ public class ShowService {
     }
 
     public void aboutStudent(Student student) {
-        System.out.format("Студент: %s\nУчебный план: %s\nНачало обучения: %s\n\n",
+        System.out.format("Студент: %s%nУчебный план: %s%nНачало обучения: %s%n%n",
                 student.getName(),
                 student.getCurriculum().getTitle(),
                 student.getStartDate());
 
-        System.out.format("%-25s %s\n", "Курс", "Длительность (ч.)");
+        System.out.format("%-25s %s%n", "Курс", "Длительность (ч.)");
         System.out.println("----------------------------------------");
         for (Course course : student.getCurriculum().getCourses()) {
-            System.out.format("%-25s %s\n", course.getTitle(), course.getDuration());
+            System.out.format("%-25s %s%n", course.getTitle(), course.getDuration());
         }
 
-        System.out.println("\nОценки:");
+        System.out.println("%nОценки:");
         List<Integer> marks = student.getMarks();
         for (int i = 0; i < marks.size(); i++) {
             System.out.print(marks.get(i));
@@ -57,7 +57,7 @@ public class ShowService {
                 System.out.print(", ");
             }
         }
-        System.out.println("\n");
+        System.out.println("%n");
 
         showStudentStatus(student);
     }
@@ -70,7 +70,7 @@ public class ShowService {
         if (remainingDays == 0) {
 
             if (averageMark < 4.5) {
-                System.out.format("Студент был исключён из программы %s со средним баллом: %.1f\n",
+                System.out.format("Студент был исключён из программы %s со средним баллом: %.1f%n",
                         curriculumTitle,
                         averageMark);
             } else {
@@ -80,7 +80,7 @@ public class ShowService {
             }
         } else {
             int studentStatus = studentService.isStudentCanBeKickOut(student);
-            System.out.format("До конца обучения по программе %s осталось %d дней. Средний бал: %.1f\n",
+            System.out.format("До конца обучения по программе %s осталось %d дней. Средний бал: %.1f%n",
                     curriculumTitle,
                     remainingDays,
                     averageMark);
