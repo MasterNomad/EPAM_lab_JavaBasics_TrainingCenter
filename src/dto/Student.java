@@ -60,4 +60,15 @@ public class Student {
     public void setMarks(List<Integer> marks) {
         this.marks = marks;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", curriculum=" + curriculum +
+                ", startDate=" + startDate +
+                ", marks=" + marks +
+                '}';
+    }
 }

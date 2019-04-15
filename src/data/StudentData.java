@@ -21,10 +21,10 @@ public class StudentData {
         CurriculumRepository curriculumRepository = new CurriculumRepository();
 
         students.add(new Student(1L, "Petrov Petr", curriculumRepository.getCurriculumById(1), LocalDate.now().minusDays(7), createMarks(7)));
-        students.add(new Student(1L, "Ivanov Ivan", curriculumRepository.getCurriculumById(2), LocalDate.now().minusDays(2), createMarks(2)));
-        students.add(new Student(1L, "Vasiliev Vasiliy", curriculumRepository.getCurriculumById(3), LocalDate.now().minusDays(20), createMarks(20)));
-        students.add(new Student(1L, "Iliyn Ilya", curriculumRepository.getCurriculumById(1), LocalDate.now().minusDays(15), createMarks(15)));
-        students.add(new Student(1L, "Nikitin Nikita", curriculumRepository.getCurriculumById(3), LocalDate.now().minusDays(6), createMarks(6)));
+        students.add(new Student(2L, "Ivanov Ivan", curriculumRepository.getCurriculumById(2), LocalDate.now().minusDays(2), createMarks(2)));
+        students.add(new Student(3L, "Vasiliev Vasiliy", curriculumRepository.getCurriculumById(3), LocalDate.now().minusDays(20), createMarks(20)));
+        students.add(new Student(4L, "Iliyn Ilya", curriculumRepository.getCurriculumById(1), LocalDate.now().minusDays(15), createMarks(15)));
+        students.add(new Student(5L, "Nikitin Nikita", curriculumRepository.getCurriculumById(3), LocalDate.now().minusDays(6), createMarks(6)));
     }
 
     private static List<Integer> createMarks(int quantity) {

@@ -16,7 +16,8 @@ public class StudentService {
     private StudentRepository studentRepository = new StudentRepository();
 
     public int getRemainingDaysByStudent(Student student) {
-        return getCurriculumDuration(student.getCurriculum()) - (int) DAYS.between(student.getStartDate(), LocalDate.now());
+        int remainingDays = getCurriculumDuration(student.getCurriculum()) - (int) DAYS.between(student.getStartDate(), LocalDate.now());
+        return remainingDays < 0 ? 0 : remainingDays;
     }
 
     public double getAverageMarkByStudent(Student student) {

@@ -34,7 +34,7 @@ public class CurriculumData {
         courses.add(courseRepository.getCourseByTitle("Hibernate"));
         courses.add(courseRepository.getCourseByTitle("Advanced Java"));
 
-        curriculums.add(new Curriculum(2L, "Java Developer ", courses));
+        curriculums.add(new Curriculum(2L, "Java Developer", courses));
 
         courses.clear();
         courses.add(courseRepository.getCourseByTitle("Обзор технологий Java"));
