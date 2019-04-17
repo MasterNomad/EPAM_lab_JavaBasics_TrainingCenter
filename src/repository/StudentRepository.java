@@ -1,18 +1,25 @@
 package repository;
 
-import data.StudentData;
 import dto.Student;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class StudentRepository {
 
-    public Student getStudentById (long id) {
-        return StudentData.getStudents().stream().filter(student -> student.getId() == id).findFirst().orElse(null);
+    private List<Student> students = new LinkedList<>();
+
+    public Student getStudentById(long id) {
+        return students.stream().filter(student -> student.getId() == id).findFirst().orElse(null);
     }
 
     public List<Student> getAllStudents() {
-        return StudentData.getStudents();
+        return students;
     }
+
+    public void addStudents (List<Student> students) {
+        this.students.addAll(students);
+    }
+
 
 }

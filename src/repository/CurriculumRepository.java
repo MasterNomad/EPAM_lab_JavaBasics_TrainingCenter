@@ -1,15 +1,19 @@
 package repository;
 
-import data.CurriculumData;
 import dto.Curriculum;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class CurriculumRepository {
 
-    public Curriculum getCurriculumByTitle (String title) {
-        return CurriculumData.getCurriculums().stream().filter(curriculum -> curriculum.getTitle().equals(title)).findFirst().orElse(null);
-    }
+    private List<Curriculum> curriculumList = new LinkedList<>();
 
     public Curriculum getCurriculumById(long id) {
-        return CurriculumData.getCurriculums().stream().filter(curriculum -> curriculum.getId() == id).findFirst().orElse(null);
+        return curriculumList.stream().filter(curriculum -> curriculum.getId() == id).findFirst().orElse(null);
+    }
+
+    public void addCurriculumList(List <Curriculum> curriculumList) {
+        this.curriculumList.addAll(curriculumList);
     }
 }

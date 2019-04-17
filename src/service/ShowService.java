@@ -10,8 +10,13 @@ import java.util.stream.Collectors;
 
 public class ShowService {
 
-    private StudentRepository studentRepository = new StudentRepository();
+    private StudentRepository studentRepository;
+
     private StudentService studentService = new StudentService();
+
+    public ShowService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     private String format = "%-20s %-20s %-10s%n";
 
@@ -49,7 +54,7 @@ public class ShowService {
             System.out.format("%-25s %s%n", course.getTitle(), course.getDuration());
         }
 
-        System.out.println("%nОценки:");
+        System.out.println("\nОценки:");
         List<Integer> marks = student.getMarks();
         for (int i = 0; i < marks.size(); i++) {
             System.out.print(marks.get(i));
@@ -57,7 +62,7 @@ public class ShowService {
                 System.out.print(", ");
             }
         }
-        System.out.println("%n");
+        System.out.println("\n");
 
         showStudentStatus(student);
     }
