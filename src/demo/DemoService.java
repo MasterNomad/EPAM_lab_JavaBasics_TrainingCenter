@@ -29,9 +29,9 @@ public class DemoService {
     public void execute() {
         showService.showStudentsByAverageMark();
         System.out.println("________________________________");
-        showService.showStudentsByDaysRemaining();
+        showService.showStudentsByRemainingDays();
         System.out.println("________________________________");
-        showService.aboutStudent(studentRepository.getStudentById(3L));
+        showService.aboutStudent(studentRepository.getStudentById(1L));
     }
 
     private void fillData() {

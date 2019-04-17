@@ -4,26 +4,20 @@ import dto.Course;
 import dto.Student;
 import repository.StudentRepository;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ShowService {
 
-    private StudentRepository studentRepository;
-
-    private StudentService studentService = new StudentService();
-
-    public ShowService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
-
+    private StudentService studentService;
     private String format = "%-20s %-20s %-10s%n";
 
+    public ShowService(StudentRepository studentRepository) {
+        this.studentService = new StudentService(studentRepository);
+    }
+
     public void showStudentsByAverageMark() {
-        List<Student> sortStudents = studentRepository.getAllStudents().stream()
-                .sorted(Comparator.comparingDouble(studentService::getAverageMarkByStudent).reversed())
-                .collect(Collectors.toList());
+        List <Student> sortStudents = studentService.getStudentsSortedByAverageMark();
+
         System.out.println("\tСортировка по средней оценке");
         System.out.format(format, "Студент", "Учебный план", "Средняя оценка");
         for (Student student : sortStudents) {
@@ -31,10 +25,9 @@ public class ShowService {
         }
     }
 
-    public void showStudentsByDaysRemaining() {
-        List<Student> sortStudents = studentRepository.getAllStudents().stream()
-                .sorted(Comparator.comparingDouble(studentService::getRemainingDaysByStudent).reversed())
-                .collect(Collectors.toList());
+    public void showStudentsByRemainingDays() {
+        List<Student> sortStudents = studentService.getStudentsSortedByRemainingDays();
+
         System.out.println("\tСортировка по оставшимся дням");
         System.out.format(format, "Студент", "Учебный план", "Дней осталось");
         for (Student student : sortStudents) {

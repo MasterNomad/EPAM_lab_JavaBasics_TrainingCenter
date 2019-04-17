@@ -1,7 +1,5 @@
 package dto;
 
-import com.sun.javaws.progress.Progress;
-
 import java.time.LocalDate;
 import java.util.List;
 
