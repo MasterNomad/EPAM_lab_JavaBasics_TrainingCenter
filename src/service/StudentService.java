@@ -30,9 +30,7 @@ class StudentService {
     double getAverageMarkByStudent(Student student) {
         double value = student.getMarks().stream().mapToDouble(a -> a).average().orElse(0);
 
-        BigDecimal bd = new BigDecimal(Double.toString(value));
-        bd = bd.setScale(1, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+        return new BigDecimal(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 
     // Возвращает -1, если студент однознаяно будет отчислен
