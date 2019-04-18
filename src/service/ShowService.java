@@ -9,14 +9,17 @@ import java.util.List;
 public class ShowService {
 
     private StudentService studentService;
+    private StudentRepository studentRepository;
+
     private String format = "%-20s %-20s %-10s%n";
 
     public ShowService(StudentRepository studentRepository) {
         this.studentService = new StudentService(studentRepository);
+        this.studentRepository = studentRepository;
     }
 
     public void showStudentsByAverageMark() {
-        List <Student> sortStudents = studentService.getStudentsSortedByAverageMark();
+        List<Student> sortStudents = studentService.getStudentsSortedByAverageMark();
 
         System.out.println("\tСортировка по средней оценке");
         System.out.format(format, "Студент", "Учебный план", "Средняя оценка");
@@ -58,6 +61,15 @@ public class ShowService {
         System.out.println("\n");
 
         showStudentStatus(student);
+    }
+
+    public void showStudentsWhoCanBeNotKickOut() {
+        System.out.println("Студенты, которые могут закончить обучение:");
+        for (Student student : studentRepository.getAllStudents()) {
+            if (studentService.isStudentCanBeKickOut(student) >= 0 && studentService.getRemainingDaysByStudent(student) > 0) {
+                System.out.printf("%-20s %.1f%n", student.getName(), studentService.getAverageMarkByStudent(student));
+            }
+        }
     }
 
     private void showStudentStatus(Student student) {

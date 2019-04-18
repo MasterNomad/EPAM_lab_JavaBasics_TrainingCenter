@@ -31,7 +31,9 @@ public class DemoService {
         System.out.println("________________________________");
         showService.showStudentsByRemainingDays();
         System.out.println("________________________________");
-        showService.aboutStudent(studentRepository.getStudentById(1L));
+        showService.aboutStudent(studentRepository.getStudentById(5L));
+        System.out.println("________________________________");
+        showService.showStudentsWhoCanBeNotKickOut();
     }
 
     private void fillData() {
